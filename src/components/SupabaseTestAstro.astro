@@ -1,0 +1,29 @@
+---
+import { supabase } from "../lib/supabase";
+
+const { data: todos, error } = await supabase.from("todos").select("*");
+---
+
+<style>
+  h2 {
+    color: seagreen;
+    font-size: 20px;
+  }
+  p {
+    color: black;
+    font-size: 20px;
+  }
+</style>
+
+<div>
+  <h2>Supabase Todos in astro component</h2>
+  {
+    todos?.map((todo) => (
+      <div>
+        <p>
+          {todo.title} / Status: {todo.status}
+        </p>
+      </div>
+    ))
+  }
+</div>
